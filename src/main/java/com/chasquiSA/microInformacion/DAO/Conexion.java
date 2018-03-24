@@ -1,11 +1,14 @@
 package com.chasquiSA.microInformacion.DAO;
 
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.SQLException;
 
 public class Conexion {
 	private static Connection conexion=null;
-	public static Connection getConexion() throws Exception{
+	/*public static Connection getConexion() throws Exception{
 		//String urlDataBase = "jdbc:postgresql://localhost:5432/ChasquiSA";
 		String urlDataBase = "jdbc:postgresql://localhost/ChasquiSA";
 		//String urlDataBase = "postgres://@ec2-54-243-185-195.compute-1.amazonaws.com:5432/dehidnnhrpsn52";
@@ -17,7 +20,16 @@ public class Conexion {
 			throw e;
 		}
 		return conexion;
-	}
+	}*/
+	 public static Connection getConnection() throws URISyntaxException, SQLException {
+	        URI dbUri = new URI(System.getenv("DATABASE_URL"));
+
+	        String username = dbUri.getUserInfo().split(":")[0];
+	        String password = dbUri.getUserInfo().split(":")[1];
+	        String dbUrl = "jdbc:postgresql://" + dbUri.getHost() + dbUri.getPath();
+
+	        return DriverManager.getConnection(dbUrl, username, password);
+	    }
 	public static void cerrarConexion() throws Exception{
 		conexion.close();
 	}
