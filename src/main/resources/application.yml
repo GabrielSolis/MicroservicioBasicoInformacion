@@ -30,4 +30,4 @@ eureka:
 security:
    oauth2:
     resource:
-      userInfoUri: https://chasqui-auth.herokuapp.com/ #http://localhost:9999/user     
+      userInfoUri: https://chasqui-auth.herokuapp.com/user #http://localhost:9999/user     
