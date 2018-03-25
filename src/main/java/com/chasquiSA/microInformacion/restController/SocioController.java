@@ -93,6 +93,7 @@ public class SocioController {
 		try {
 			socio.asignarFechaRetiro();
 			dao.modificarEstado(socio);
+			System.out.println("Desde el controler:" + socio.getFechaRetiro());
 			return new ResponseEntity<>("Creado",HttpStatus.OK);
 		}catch(Exception e) {
 			throw e;

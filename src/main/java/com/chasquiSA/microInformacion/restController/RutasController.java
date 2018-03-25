@@ -75,12 +75,12 @@ public class RutasController {
 	public ResponseEntity<?> actualizarRuta(@RequestBody Ruta ruta)throws Exception{
 		try {
 			RutaDAO dao = new RutaDAO();
-			if(!dao.verificarRuta(ruta.getLetra())) {
+			//if(!dao.verificarRuta(ruta.getLetra())) {
 				dao.modificarRuta(ruta);
-				return new ResponseEntity<>("Ruta modificada exitosamente",HttpStatus.OK);
-			}else {
+			//	return new ResponseEntity<>("Ruta modificada exitosamente",HttpStatus.OK);
+			//}else {
 				return new ResponseEntity<>("Ruta ya registrada",HttpStatus.CONFLICT);
-			}
+			//}
 		}catch(Exception e) {
 			throw e;
 		}

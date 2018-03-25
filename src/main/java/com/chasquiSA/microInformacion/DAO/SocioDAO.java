@@ -110,6 +110,7 @@ public class SocioDAO {
 			cstm.setInt(1,socio.getCodigo());;
 			cstm.setString(2,socio.getEstado());
 			cstm.setString(3,socio.getFechaRetiro());
+			System.out.println("Desde el DAO"+socio.getFechaRetiro());
 			//System.out.println(cstm.getParameterMetaData().getParameterClassName(6) + " " + socio.getNombresApellidosPariente() + " "+ cstm.getParameterMetaData().getParameterClassName(13) );
 			cstm.execute();
 			Conexion.cerrarConexion();
