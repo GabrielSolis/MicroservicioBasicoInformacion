@@ -55,7 +55,7 @@ public class Personal extends Persona{
 
 	public void asignarFechaRetiro(){
 		LocalDate fechaActual = LocalDate.now();
-		DateTimeFormatter formato = DateTimeFormatter.ofPattern("YYYY-LL-DD");
+		DateTimeFormatter formato = DateTimeFormatter.ofPattern("YYYY-LL-dd");
 		this.fechaRetiro = formato.format(fechaActual);
 	}
 }

@@ -82,7 +82,7 @@ public class Socio extends Persona {
 
 	public void asignarFechaRetiro(){
 		LocalDate fechaActual = LocalDate.now();
-		DateTimeFormatter formato = DateTimeFormatter.ofPattern("YYYY-LL-DD");
+		DateTimeFormatter formato = DateTimeFormatter.ofPattern("YYYY-LL-dd");
 		System.out.println("Desde el DOMINIO" +formato.format(fechaActual) );
 		this.fechaRetiro = formato.format(fechaActual);
 	}
