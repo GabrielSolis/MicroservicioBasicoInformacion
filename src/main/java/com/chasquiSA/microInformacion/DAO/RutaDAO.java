@@ -73,6 +73,7 @@ public class RutaDAO {
 				ruta.setCodigo(rs.getInt("p_codigo"));
 				ruta.setLetra(rs.getString("p_letra"));
 				ruta.setEstado(rs.getString("p_estado"));
+				ruta.setTiempo(rs.getInt("p_tiempo"));
 				ruta.setVigencia(rs.getBoolean("p_vigencia"));
 				lista.add(ruta);
 			}
@@ -112,6 +113,7 @@ public class RutaDAO {
 				ruta.setCodigo(rs.getInt("p_codigo"));
 				ruta.setLetra(rs.getString("p_letra"));
 				ruta.setEstado(rs.getString("p_estado"));
+				
 				ruta.setVigencia(rs.getBoolean("p_vigencia"));
 				lista.add(ruta);
 				//System.out.println(ruta.getCalles().size());
