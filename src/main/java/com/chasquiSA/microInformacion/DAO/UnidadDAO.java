@@ -261,7 +261,43 @@ public class UnidadDAO {
 			Conexion.cerrarConexion();
 		}
 	}
-	
+	public RegistroUnidad getRegistroUnidadPlaca(String placa) throws Exception {
+		RegistroUnidad registroUnidad = new RegistroUnidad();
+		try {
+			Connection conexion = Conexion.getConexion();
+			CallableStatement cstm = conexion.prepareCall("{call pr_lRegistroUnidadPlaca(?)}");
+			//Statement sts = conexion.createStatement();
+			ResultSet rs;
+			cstm.setString(1,placa);
+			rs = cstm.executeQuery();
+			
+			while(rs.next()) {
+				
+				registroUnidad.setFechaRegistro(rs.getString("fecharegistro"));
+				registroUnidad.getSocio().setCodigo(rs.getInt("codigoSocio"));
+				registroUnidad.getSocio().setNombres(rs.getString("nombres"));
+				registroUnidad.getSocio().setApellidoPaterno(rs.getString("apellidoPaterno"));
+				registroUnidad.getSocio().setApellidoMaterno(rs.getString("apellidoMaterno"));
+				registroUnidad.getSocio().setNumeroAcciones(rs.getInt("numeroAcciones"));
+				registroUnidad.getUnidad().setCodigo(rs.getInt("codigoUnidad"));
+				registroUnidad.getUnidad().setPlaca(rs.getString("placa"));
+				registroUnidad.getUnidad().setMarca(rs.getString("marca"));
+				registroUnidad.getUnidad().setModelo(rs.getString("modelo"));
+				registroUnidad.getUnidad().setColor(rs.getString("color"));
+				registroUnidad.getUnidad().setCapacidad(rs.getInt("capacidad"));
+				registroUnidad.getUnidad().setAnioFabricacion(rs.getInt("anioFabricacion"));
+				registroUnidad.getUnidad().setEstado(rs.getString("estado"));
+				
+			}
+			Conexion.cerrarConexion();
+			return registroUnidad;
+		}catch(Exception e) {
+			throw e;
+		}finally{
+			registroUnidad = null;
+			Conexion.cerrarConexion();
+		}
+	}
 	public List<RegistroUnidad> listarUnidadesSocio(String estado,int idSocio) throws Exception {
 		List<RegistroUnidad> registroUnidades = new ArrayList<>();
 		try {

@@ -104,7 +104,7 @@ public class RutasController {
 		try {
 			RutaDAO dao = new RutaDAO();
 			dao.eliminarCalleRuta(codigoCalleRuta);;
-			return new ResponseEntity<>("Punto dado de baja",HttpStatus.OK);
+			return new ResponseEntity<>("Ruta dada de baja",HttpStatus.OK); //decia punto
 		}catch(Exception e) {
 			throw e;
 		}
@@ -115,7 +115,7 @@ public class RutasController {
 		try {
 			RutaDAO dao = new RutaDAO();
 			dao.eliminarRuta(ruta);;
-			return new ResponseEntity<>("Punto dado de baja",HttpStatus.OK);
+			return new ResponseEntity<>("Ruta dada de baja",HttpStatus.OK); //decia punto
 		}catch(Exception e) {
 			throw e;
 		}

@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -43,6 +43,17 @@ public class UnidadController {
 		}
 	}
 	
+	@GetMapping("/placa/{placa}")
+	public ResponseEntity<?> listarUnidadPlaca(@PathVariable String placa)throws Exception{
+		RegistroUnidad registroUnidad = new RegistroUnidad();
+		UnidadDAO dao = new UnidadDAO();
+		try {
+			registroUnidad =dao.getRegistroUnidadPlaca(placa);
+		}catch(Exception e) {
+			throw e;
+		}
+		return new ResponseEntity<>(registroUnidad,HttpStatus.OK);
+	}
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ResponseEntity<?> listarUnidades(@RequestParam String estado,@RequestParam String apellido																			){
 		List<socioPlaca> socioPlaca = new ArrayList<>();
