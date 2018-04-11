@@ -271,8 +271,8 @@ public class UnidadDAO {
 			cstm.setString(1,placa);
 			rs = cstm.executeQuery();
 			
-			///while(rs.next()) {
-				rs.next();
+			while(rs.next()) {
+				
 				System.out.println(rs.getString("fecharegistro"));
 				registroUnidad.setFechaRegistro(rs.getString("fecharegistro"));
 				registroUnidad.getSocio().setCodigo(rs.getInt("codigoSocio"));
@@ -289,7 +289,7 @@ public class UnidadDAO {
 				registroUnidad.getUnidad().setAnioFabricacion(rs.getInt("anioFabricacion"));
 				registroUnidad.getUnidad().setEstado(rs.getString("estado"));
 				
-			//}
+			}
 			Conexion.cerrarConexion();
 			return registroUnidad;
 		}catch(Exception e) {
