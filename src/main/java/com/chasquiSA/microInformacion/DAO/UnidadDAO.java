@@ -273,7 +273,8 @@ public class UnidadDAO {
 			
 			while(rs.next()) {
 				
-				System.out.println(rs.getString("fecharegistro"));
+				//System.out.println(rs.getString("fecharegistro"));
+				registroUnidad.setCodigo(rs.getInt("codigo"));
 				registroUnidad.setFechaRegistro(rs.getString("fecharegistro"));
 				registroUnidad.getSocio().setCodigo(rs.getInt("codigoSocio"));
 				registroUnidad.getSocio().setNombres(rs.getString("nombres"));
