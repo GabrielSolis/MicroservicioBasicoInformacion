@@ -24,7 +24,7 @@ eureka:
        healthCheckUrlPath: /my_health
        metadataMap:
          appOwner: Tesis
-         description: microservicio con la informacion base de la empresa
+         description: microservicio para el control de tiempos y recorridos
       
 #para seguridad      
 security:
