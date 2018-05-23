@@ -12,8 +12,9 @@ public class Conexion {
 		String urlDataBase = "jdbc:postgresql://ec2-174-129-28-38.compute-1.amazonaws.com:5432/d7ite1rtejj9da";
 		try {
 			Class.forName("org.postgresql.Driver");
-			//conexion = DriverManager.getConnection(urlDataBase,user,clave);
-			}catch(Exception e) {
+			
+			conexion = DriverManager.getConnection(urlDataBase,"epnvssgbxirdfv","09588d1b6b0a2b62a99276551999d9a5e9bebe9f3c2a04b0e926a11066b51289");
+		}catch(Exception e) {
 			throw e;
 		}
 		return conexion;
