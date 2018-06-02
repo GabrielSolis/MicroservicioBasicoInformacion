@@ -12,7 +12,6 @@ public class Unidad {
 	private String color;
 	private String estado;
 	private boolean vigencia;
-	
 	public Unidad() {
 		
 	}

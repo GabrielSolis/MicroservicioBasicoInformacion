@@ -4,8 +4,11 @@ import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
 
+import org.springframework.stereotype.Repository;
+
 import com.chasquiSA.microInformacion.Dominio.GPS;
 
+@Repository
 public class GPSUnidadDAO {
 	public GPS obtenerGPS(int codigoUnidad)throws Exception{
 		GPS gps = new GPS();
