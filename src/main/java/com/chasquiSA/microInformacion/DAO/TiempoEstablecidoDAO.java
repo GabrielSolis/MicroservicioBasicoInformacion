@@ -76,6 +76,7 @@ public class TiempoEstablecidoDAO {
 				Ruta ruta = new Ruta();
 				punto.setCodigo(rs.getInt("p_codigoPuntoControl"));
 				punto.setDireccion(rs.getString("p_direccion"));
+				punto.obtenerPunto(rs.getString("p_punto"));
 				ruta.setCodigo(rs.getInt("p_codigoRuta"));
 				ruta.setLetra(rs.getString("p_letra"));
 				tiempo.setPunto(punto);
