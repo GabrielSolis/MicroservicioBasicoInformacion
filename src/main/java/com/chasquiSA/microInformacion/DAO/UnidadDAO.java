@@ -340,5 +340,30 @@ public class UnidadDAO {
 			Conexion.cerrarConexion();
 		}
 	}
+	
+	public List<RegistroUnidad> listarUnidadesActivas()throws Exception{
+		List<RegistroUnidad> registroUnidades = new ArrayList<>();
+		try {
+			Connection conexion = Conexion.getConexion();
+			CallableStatement cstm  = conexion.prepareCall("{call pr_liUnidades()}");
+			ResultSet rs;
+			rs = cstm.executeQuery();
+			while(rs.next()) {
+				RegistroUnidad registroUnidad = new RegistroUnidad();
+				registroUnidad.setCodigo(rs.getInt("codigoRegistroUnidad"));
+				registroUnidad.getSocio().setNombres(rs.getString("nombres"));
+				registroUnidad.getSocio().setApellidoPaterno(rs.getString("apellidoPaterno"));
+				registroUnidad.getSocio().setApellidoMaterno(rs.getString("apellidoMaterno"));
+				registroUnidad.getUnidad().setPlaca(rs.getString("placa"));
+				registroUnidad.getUnidad().setEstado(rs.getString("estado"));
+				registroUnidades.add(registroUnidad);
+			}
+			return registroUnidades;
+		}catch(Exception e){
+			throw e;
+		}finally {
+			Conexion.cerrarConexion();
+		}
+	}
 }
 
