@@ -99,16 +99,19 @@ public class RutaDAO {
 				cstm2.setInt(1,rs.getInt("p_codigo"));
 				
 				rs2 = cstm2.executeQuery();
-				while(rs2.next()) {
-					
-					CalleRuta calle = new CalleRuta();
-					calle.setCodigo(rs2.getInt("p_codigo"));
-					calle.setDireccion(rs2.getString("p_direccion"));
-					calle.obtenerPunto(rs2.getString("p_punto"));
-					calle.setNumeroOrden(rs2.getInt("p_numeroOrden"));
-					calle.setVigencia(rs2.getBoolean("p_vigencia"));
-					listaCalles.add(calle);
+				if(rs2.getRow() != 0) {
+					while(rs2.next()) {
+						
+						CalleRuta calle = new CalleRuta();
+						calle.setCodigo(rs2.getInt("p_codigo"));
+						calle.setDireccion(rs2.getString("p_direccion"));
+						calle.obtenerPunto(rs2.getString("p_punto"));
+						calle.setNumeroOrden(rs2.getInt("p_numeroOrden"));
+						calle.setVigencia(rs2.getBoolean("p_vigencia"));
+						listaCalles.add(calle);
+					}
 				}
+				
 				ruta.setCalles(listaCalles);
 				ruta.setCodigo(rs.getInt("p_codigo"));
 				ruta.setLetra(rs.getString("p_letra"));
