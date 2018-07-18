@@ -6,6 +6,8 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
 import com.chasquiSA.microInformacion.Dominio.CalleRuta;
 import com.chasquiSA.microInformacion.Dominio.Ruta;
 
@@ -97,11 +99,11 @@ public class RutaDAO {
 				List<CalleRuta> listaCalles = new ArrayList<>();	
 				Ruta ruta = new Ruta();
 				cstm2.setInt(1,rs.getInt("p_codigo"));
-				
+				Logger log = Logger.getLogger("Logger de Ejemplo");
+				log.info(rs.getInt("p_codigo"));
 				rs2 = cstm2.executeQuery();
-					if(rs2.isBeforeFirst()) {
-					while(rs2.next()) {
-						
+				
+					while(rs2.next()) {			
 						CalleRuta calle = new CalleRuta();
 						calle.setCodigo(rs2.getInt("p_codigo"));
 						calle.setDireccion(rs2.getString("p_direccion"));
@@ -109,7 +111,6 @@ public class RutaDAO {
 						calle.setNumeroOrden(rs2.getInt("p_numeroOrden"));
 						calle.setVigencia(rs2.getBoolean("p_vigencia"));
 						listaCalles.add(calle);
-					}
 				}
 				
 				ruta.setCalles(listaCalles);
