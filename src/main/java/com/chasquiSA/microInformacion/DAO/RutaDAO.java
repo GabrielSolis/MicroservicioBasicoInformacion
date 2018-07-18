@@ -103,7 +103,9 @@ public class RutaDAO {
 				log.info(rs.getInt("p_codigo"));
 				rs2 = cstm2.executeQuery();
 				
-					while(rs2.next()) {			
+					while(rs2.next()) {		
+						
+						log.info(rs2.getInt("p_punto"));
 						CalleRuta calle = new CalleRuta();
 						calle.setCodigo(rs2.getInt("p_codigo"));
 						calle.setDireccion(rs2.getString("p_direccion"));
