@@ -99,7 +99,7 @@ public class RutaDAO {
 				cstm2.setInt(1,rs.getInt("p_codigo"));
 				
 				rs2 = cstm2.executeQuery();
-					if(rs.isBeforeFirst()) {
+					if(rs2.isBeforeFirst()) {
 					while(rs2.next()) {
 						
 						CalleRuta calle = new CalleRuta();
