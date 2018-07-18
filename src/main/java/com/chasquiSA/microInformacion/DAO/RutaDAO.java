@@ -105,7 +105,7 @@ public class RutaDAO {
 				
 					while(rs2.next()) {		
 						
-						log.info(rs2.getInt("p_punto"));
+						log.info(rs2.getString("p_punto"));
 						CalleRuta calle = new CalleRuta();
 						calle.setCodigo(rs2.getInt("p_codigo"));
 						calle.setDireccion(rs2.getString("p_direccion"));
