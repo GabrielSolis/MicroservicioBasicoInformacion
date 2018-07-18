@@ -89,17 +89,17 @@ public class RutaDAO {
 	public List<Ruta> listarRutasVigentes()throws Exception{
 		List<Ruta> lista = new ArrayList<>();
 		ResultSet rs;
-		ResultSet rs2;
+		
 		try {
 			Connection conexion = Conexion.getConexion();
 			CallableStatement cstm = conexion.prepareCall("{call pr_liRutasVigentes()}");
 			CallableStatement cstm2 = conexion.prepareCall("{call pr_liCallesRutaVigentes(?)}");
 			rs = cstm.executeQuery();
 			while(rs.next()) {
+				ResultSet rs2;
 				List<CalleRuta> listaCalles = new ArrayList<>();	
 				Ruta ruta = new Ruta();
-				//cstm2.setInt(1,rs.getInt("p_codigo"));
-				cstm2.setInt(1,4);
+				cstm2.setInt(1,rs.getInt("p_codigo"));
 				Logger log = Logger.getLogger("Logger de Ejemplo");
 				log.info(rs.getInt("p_codigo"));
 				rs2 = cstm2.executeQuery();
