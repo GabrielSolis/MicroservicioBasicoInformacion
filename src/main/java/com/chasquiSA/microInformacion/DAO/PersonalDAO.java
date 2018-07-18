@@ -79,6 +79,8 @@ public class PersonalDAO {
 			Conexion.cerrarConexion();
 		}catch(Exception e) {
 				throw e;
+		}finally {
+			Conexion.cerrarConexion();
 		}
 	}
 	
@@ -129,6 +131,8 @@ public class PersonalDAO {
 			Conexion.cerrarConexion();
 		}catch(Exception e) {
 				throw e;
+		}finally {
+			Conexion.cerrarConexion();
 		}
 	}
 	

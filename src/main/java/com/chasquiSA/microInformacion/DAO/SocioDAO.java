@@ -38,6 +38,8 @@ public class SocioDAO {
 			Conexion.cerrarConexion();
 		}catch(Exception e) {
 				throw e;
+		}finally {
+			Conexion.cerrarConexion();
 		}
 	}
 	public List<Socio> listar(String estado, String apellido)throws Exception{
@@ -116,6 +118,8 @@ public class SocioDAO {
 			Conexion.cerrarConexion();
 		}catch(Exception e) {
 				throw e;
+		}finally {
+			Conexion.cerrarConexion();
 		}
 	}
 	public boolean verificarDNI(String dni) throws Exception{
@@ -130,6 +134,8 @@ public class SocioDAO {
 			return rs.getBoolean(1);
 		}catch(Exception e) {
 			throw e;
+		}finally {
+			Conexion.cerrarConexion();
 		}
 	}
 	public Socio getSocio(int id) throws Exception {
