@@ -98,7 +98,8 @@ public class RutaDAO {
 			while(rs.next()) {
 				List<CalleRuta> listaCalles = new ArrayList<>();	
 				Ruta ruta = new Ruta();
-				cstm2.setInt(1,rs.getInt("p_codigo"));
+				//cstm2.setInt(1,rs.getInt("p_codigo"));
+				cstm2.setInt(1,4);
 				Logger log = Logger.getLogger("Logger de Ejemplo");
 				log.info(rs.getInt("p_codigo"));
 				rs2 = cstm2.executeQuery();
