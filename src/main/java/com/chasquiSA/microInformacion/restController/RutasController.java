@@ -79,7 +79,7 @@ public class RutasController {
 				dao.modificarRuta(ruta);
 			//	return new ResponseEntity<>("Ruta modificada exitosamente",HttpStatus.OK);
 			//}else {
-				return new ResponseEntity<>("Ruta ya registrada",HttpStatus.CONFLICT);
+				return new ResponseEntity<>("Ruta modicada exitosamente" , HttpStatus.OK);
 			//}
 		}catch(Exception e) {
 			throw e;
