@@ -1,10 +1,14 @@
 package com.chasquiSA.microInformacion.restController;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,6 +18,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.chasquiSA.microInformacion.DAO.SocioDAO;
 import com.chasquiSA.microInformacion.Dominio.Socio;
+
+import net.sf.jasperreports.engine.JasperExportManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 
 @RestController
 @RequestMapping("/socios")
@@ -95,6 +104,21 @@ public class SocioController {
 			dao.modificarEstado(socio);
 			System.out.println("Desde el controler:" + socio.getFechaRetiro());
 			return new ResponseEntity<>("Creado",HttpStatus.OK);
+		}catch(Exception e) {
+			throw e;
+		}
+	}
+	
+	
+	@GetMapping(value = "/reporte/listarSocio", produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
+	public ResponseEntity<byte[]> generarReporteListadoSocio()throws Exception{
+		byte[] data = null;
+		SocioDAO dao = new SocioDAO();
+		try {
+			File file = new ClassPathResource("/reports/consultas.jasper").getFile();
+
+			JasperPrint print = JasperFillManager.fillReport(file.getPath(), null, new JRBeanCollectionDataSource(dao.listar("","")));
+			return new ResponseEntity<byte[]>(JasperExportManager.exportReportToPdf(print),HttpStatus.OK);	
 		}catch(Exception e) {
 			throw e;
 		}
