@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -99,5 +100,16 @@ public class PersonalController {
 		}catch(Exception e) {
 			throw e;
 		}
+	}
+	@GetMapping(value="/listadoPersonal/reporte/{estado}/{apellido}", produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
+	public ResponseEntity<byte[]> reporteListadoPersonal(@PathVariable("estado")String estado,@PathVariable("apellido")String apellido)throws Exception{
+		byte[] data = null;
+		PersonalDAO dao = new PersonalDAO();
+		try {
+			data = dao.listadoPersonalReporte(estado, apellido);
+		} catch (Exception e) {
+			return new ResponseEntity<byte[]>(data, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+		return new ResponseEntity<byte[]>(data, HttpStatus.OK);
 	}
 }

@@ -1,13 +1,20 @@
 package com.chasquiSA.microInformacion.DAO;
 
+import java.io.File;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.core.io.ClassPathResource;
 
 import com.chasquiSA.microInformacion.Dominio.Personal;
+
+import net.sf.jasperreports.engine.JasperExportManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 
 
 
@@ -170,6 +177,17 @@ public class PersonalDAO {
 		}finally{
 			personal = null;
 			
+		}
+	}
+	
+	public byte[] listadoPersonalReporte(String estado, String apellido)throws Exception{
+		try {
+			File file = new ClassPathResource("/reports/consultas.jasper").getFile();
+
+			JasperPrint print = JasperFillManager.fillReport(file.getPath(), null, new JRBeanCollectionDataSource(this.listar(estado,apellido)));
+			return JasperExportManager.exportReportToPdf(print);	
+		}catch(Exception e) {
+			throw e;
 		}
 	}
 }
